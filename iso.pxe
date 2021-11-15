@@ -1,0 +1,3 @@
+kernel https://boot.netboot.xyz/memdisk iso raw
+initrd https://releases.rancher.com/harvester/v0.3.0/harvester-v0.3.0-amd64.iso
+boot
