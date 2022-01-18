@@ -1,7 +1,7 @@
 #!ipxe
 dhcp
 iflinkwait -t 5000 && echo Detected link on ${ifname} 
-set base http://143.198.103.123:32026
+set base http://twosix.ibrokethe.cloud:8080
 kernel ${base}/harvester-master-vmlinuz-amd64 ip=dhcp net.ifnames=1 rd.cos.disable rd.noverifyssl root=live:${base}/harvester-master-rootfs-amd64.squashfs console=ttyS1,115200 harvester.install.automatic=true boot_cmd="echo include_ping_test=yes >> /etc/conf.d/net-online" harvester.install.config_url=https://metadata.platformequinix.com/userdata
 initrd ${base}/harvester-master-initrd-amd64
 boot
