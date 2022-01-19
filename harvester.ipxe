@@ -1,7 +1,7 @@
 #!ipxe
 dhcp
 iflinkwait -t 5000 && echo Detected link on ${ifname} 
-set base http://twosix.ibrokethe.cloud:8080
-kernel ${base}/harvester-v0.3.0-vmlinuz-amd64 ip=dhcp net.ifnames=1 rd.cos.disable rd.noverifyssl root=live:${base}/harvester-v0.3.0-rootfs-amd64.squashfs console=ttyS1,115200 harvester.install.automatic=true boot_cmd="echo include_ping_test=yes >> /etc/conf.d/net-online" harvester.install.config_url=https://metadata.platformequinix.com/userdata
-initrd ${base}/harvester-v0.3.0-initrd-amd64
+set base http://twosix.ibrokethe.cloud:8080/v1.0.0
+kernel ${base}/harvester-v1.0.0-vmlinuz-amd64 ip=dhcp net.ifnames=1 rd.cos.disable rd.noverifyssl root=live:${base}/harvester-v1.0.0-rootfs-amd64.squashfs console=ttyS1,115200 harvester.install.automatic=true boot_cmd="echo include_ping_test=yes >> /etc/conf.d/net-online" harvester.install.networks.harvester-mgmt.interfaces=hwAddr:${net0/mac} harvester.install.config_url=https://metadata.platformequinix.com/userdata
+initrd ${base}/harvester-v1.0.0-initrd-amd64
 boot
