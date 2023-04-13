@@ -1,0 +1,13 @@
+#!ipxe
+dhcp
+iflinkwait -t 5000 && echo Detected link on ${ifname}
+set version master
+set base http://10.65.38.1:8000
+kernel ${base}/harvester-${version}-vmlinuz-amd64 ip=dhcp net.ifnames=1 rd.cos.disable rd.noverifyssl root=live:${base}/harvester-${version}-rootfs-amd64.squashfs  harves
+ter.install.automatic=true harvester.scheme_version=1 harvester.install.device=/dev/sda  harvester.os.password=password harvester.install.raw_disk_image_path=${base}/harv
+ester-${version}-amd64.raw harvester.install.mode=install console=ttyS1,115200n8  boot_cmd="echo include_ping_test=yes >> /etc/conf.d/net-online" harvester.install.tty=tt
+yS1,115200n8 harvester.install.config_url=https://metadata.platformequinix.com/userdata harvester.install.management_interface.interfaces="hwAddr:${net0/mac}" harvester.i
+nstall.management_interface.method=dhcp harvester.install.management_interface.bond_options.mode=balance-tlb harvester.install.management_interface.bond_options.miimon=10
+0
+initrd ${base}/harvester-${version}-initrd-amd64
+boot
