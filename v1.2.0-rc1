@@ -1,6 +1,6 @@
 #!ipxe
 dhcp
-iflinkwait -t 5000 && echo Detected link on ${ifname} && set mac ${$ifname}/mac
+iflinkwait -t 5000 && echo Detected link on ${ifname} && set mac ${${ifname}}/mac
 set version v1.2.0-rc1
 set base https://github.com/harvester/harvester/releases/download/${version}
 set harvesterreleasebase https://releases.rancher.com/harvester/${version}
